@@ -43,8 +43,9 @@ int main()
     }
 
     std::cout << "\niterator-based for loop: \n"
-        << "- uses the vector's iterator and iterator type\n"
-        << "- dereferences the vector's iterator\n";
+        << "- uses the vector's iterator type and iterator (it)\n"
+        << "- the iterator (it) points to each vector item\n"
+        << "- dereferences the vector's iterator (*it)\n";
 
     for (std::vector<int>::iterator it = values.begin();
          it != values.end(); it++)
@@ -53,9 +54,10 @@ int main()
     }
 
     std::cout << "\niterator-based for loop: \n"
-        << "- uses the vector's iterator\n"
+        << "- uses the vector's iterator (it)\n"
+        << "- the iterator (it) points to each vector item\n"
         << "- shortens the iterator type with auto keyword\n"
-        << "- dereferences the vector's iterator\n";
+        << "- dereferences the vector's iterator (*it)\n";
 
     for (auto it = values.begin(); it != values.end(); it++)
     {
@@ -75,7 +77,7 @@ int main()
     // use int identifier ("tag") to look up the associated name
     // this is more efficient than looking up a string! 
 
-    // unordered map
+    // unordered map std::unordered_map<keyType, valueType>
     std::unordered_map<int, std::string> uMapIdToName;
 
     // map syntax looks like array syntax, but it's not the same
@@ -86,6 +88,7 @@ int main()
     std::cout << "\nunordered map does not order tags\n";
 
     // for each key value pair
+    // - range-based for loop uses the unordered map's iterator
     // - split the key value pair in the for loop body
     // - references avoid unwanted data copying
     for (auto &keyValuePair : uMapIdToName)
@@ -103,7 +106,8 @@ int main()
         std::cout << key << " = " << value << "\n";
     }
 
-    // ordered map
+    // ordered map std::map<keyType, valueType>
+    // slower than unordered map because items are sorted
     std::map<int, std::string> oMapIdToName;
 
     // map syntax looks like array syntax, but it's not the same
@@ -113,6 +117,7 @@ int main()
 
     std::cout << "\nordered map does order tags\n";
 
+    // - range-based for loop uses the ordered map's iterator
     for (auto& [key, value] : oMapIdToName)
     {
         std::cout << key << " = " << value << "\n";
