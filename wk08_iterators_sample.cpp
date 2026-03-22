@@ -78,17 +78,21 @@ int main()
 
     // for each key value pair
     // - split the key value pair in the for loop body
+    // - references avoid unwanted data copying
     for (auto &keyValuePair : mapIdToName)
     {
-        auto &key = keyValuePair.first;
-        auto &value = keyValuePair.second;
+        auto& key = keyValuePair.first;
+        auto& value = keyValuePair.second;
 
         std::cout << key << " = " << value << "\n";
     }
 
     // simpler - split the key value pair in the for statement
-    for (auto &[key, value] : mapIdToName)
+    // - references avoid unwanted data copying
+    for (auto& [key, value] : mapIdToName)
     {
         std::cout << key << " = " << value << "\n";
     }
+
+    return 0;
 }
