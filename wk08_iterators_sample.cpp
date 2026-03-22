@@ -3,6 +3,9 @@
 // 
 // Iterator practice with vectors and maps.
 // Assumes no vector or map items are being erased!
+// 
+// Code modified from The Cherno's Iterators in C++ video on YouTube
+// https://youtu.be/SgcHcbQ0RCQ?si=Y1bp7dp-2TDu9Xmb
 //------------------------------------------------------------------------------
 #include <iostream>
 #include <unordered_map>
