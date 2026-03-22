@@ -8,8 +8,9 @@
 // https://youtu.be/SgcHcbQ0RCQ?si=Y1bp7dp-2TDu9Xmb
 //------------------------------------------------------------------------------
 #include <iostream>
-#include <unordered_map>
+#include <map>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 //------------------------------------------------------------------------------
@@ -62,24 +63,32 @@ int main()
     }
 
     // with maps
-    std::cout << "\nmap iterator examples\n";
+    std::cout << "\nmap iterator examples:\n";
 
     // maps can be ordered (std::map) or unordered (std::unordered_map)
-    std::cout << "\nmaps associate a key with a value\n";
+    std::cout << "- maps associate a key (\"tag\") with a value\n";
+    std::cout << "- each map entry is a key-value pair:\n";
+    std::cout << "\tentry.first is the key (\"tag\")\n";
+    std::cout << "\tentry.second is the key's associated value\n";
+    std::cout << "- here the number is the tag, the name is the value\n";
 
     // use int identifier ("tag") to look up the associated name
     // this is more efficient than looking up a string! 
 
-    std::unordered_map<int, std::string> mapIdToName;
+    // unordered map
+    std::unordered_map<int, std::string> uMapIdToName;
 
-    // map syntax looks like array syntax
-    mapIdToName[1] = "LindaC";
-    mapIdToName[2] = "PiperB";
+    // map syntax looks like array syntax, but it's not the same
+    // - the number in the brackets is not an index, it's a tag
+    uMapIdToName[2] = "LindaC";
+    uMapIdToName[1] = "PiperB";
+
+    std::cout << "\nunordered map does not order tags\n";
 
     // for each key value pair
     // - split the key value pair in the for loop body
     // - references avoid unwanted data copying
-    for (auto &keyValuePair : mapIdToName)
+    for (auto &keyValuePair : uMapIdToName)
     {
         auto& key = keyValuePair.first;
         auto& value = keyValuePair.second;
@@ -89,7 +98,22 @@ int main()
 
     // simpler - split the key value pair in the for statement
     // - references avoid unwanted data copying
-    for (auto& [key, value] : mapIdToName)
+    for (auto& [key, value] : uMapIdToName)
+    {
+        std::cout << key << " = " << value << "\n";
+    }
+
+    // ordered map
+    std::map<int, std::string> oMapIdToName;
+
+    // map syntax looks like array syntax, but it's not the same
+    // - the number in the brackets is not an index, it's a tag
+    oMapIdToName[2] = "LindaC";
+    oMapIdToName[1] = "PiperB";
+
+    std::cout << "\nordered map does order tags\n";
+
+    for (auto& [key, value] : oMapIdToName)
     {
         std::cout << key << " = " << value << "\n";
     }
